@@ -5,7 +5,7 @@ from unittest import mock
 import pytest
 from pydantic import BaseModel, HttpUrl
 
-from aws_lambda_env_vars_parser.parser import get_environment_variables, init_environment_variables
+from aws_lambda_env_modeler import get_environment_variables, init_environment_variables
 
 SERVICE_NAME = 'Orders'
 
