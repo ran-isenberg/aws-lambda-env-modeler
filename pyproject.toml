@@ -14,6 +14,8 @@ repository="https://github.com/ran-isenberg/aws-lambda-env-vars-parser"
 readme = "README.md"
 keywords = ["environment variables parser", "best practices", "aws serverless"]
 license = "MIT-0"
+packages = [
+    { include = "aws_lambda_env_vars_parser" }]
 
 [tool.poetry.dependencies]
 python = "^3.10.0"
@@ -40,3 +42,6 @@ types-cachetools = "*"
 mypy = "*"
 types-requests = "*"
 toml = "*"
+wheel = "*"
+setuptools = "*"
+bumpversion = "*"
