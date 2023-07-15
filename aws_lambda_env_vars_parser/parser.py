@@ -1,6 +1,7 @@
 import os
 from functools import lru_cache, wraps
-from typing import Any, Type, TypeVar, Dict, Callable
+from typing import Any, Callable, Dict, Type, TypeVar
+
 from pydantic import BaseModel
 
 Model = TypeVar('Model', bound=BaseModel)
@@ -26,7 +27,7 @@ def get_environment_variables(model: Type[Model]) -> Model:
     return __parse_model(model)
 
 
-def init_environment_variables(model: Model):
+def init_environment_variables(model: Type[Model]):
     """_summary_
 
     Args:

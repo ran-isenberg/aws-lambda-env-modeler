@@ -26,9 +26,7 @@ You need to define all your environment variables in a Pydantic schema class tha
 
 For example:
 
-```python hl_lines="6" title="schemas/env_vars.py"
---8<-- "docs/examples/best_practices/environment_variables/env_vars.py"
-```
+
 
 All Pydantic schemas extend Pydantic’s ‘BaseModel’ class, turning them into a dataclass.
 
@@ -62,7 +60,7 @@ The getter function returns a parsed and validated global instance of the enviro
 It can be used *anywhere* in the function code, not just the handler.
 
 ```python hl_lines="13" title="handlers/my_handler.py"
---8<-- "docs/examples/best_practices/environment_variables/getter.py"
+--8<-- "docs/examples/best_practices/environment_variables/my_handler.py"
 ```
 
 ## **More Details**

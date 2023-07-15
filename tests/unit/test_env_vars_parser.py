@@ -5,9 +5,9 @@ from unittest import mock
 import pytest
 from pydantic import BaseModel, HttpUrl
 
-from cdk.my_service.constants import POWER_TOOLS_LOG_LEVEL, POWERTOOLS_SERVICE_NAME, SERVICE_NAME
 from aws_lambda_env_vars_parser.parser import get_environment_variables, init_environment_variables
-from tests.utils import generate_context
+
+SERVICE_NAME = 'Orders'
 
 
 class MySchema(BaseModel):
@@ -23,10 +23,10 @@ def test_handler_missing_env_var():
         return {}
 
     with pytest.raises(ValueError):
-        my_handler1({}, generate_context())
+        my_handler1({}, None)
 
 
-@mock.patch.dict(os.environ, {POWERTOOLS_SERVICE_NAME: SERVICE_NAME, POWER_TOOLS_LOG_LEVEL: 'DEBUG', 'REST_API': 'fakeapi'})
+@mock.patch.dict(os.environ, {'POWERTOOLS_SERVICE_NAME': SERVICE_NAME, 'LOG_LEVEL': 'DEBUG', 'REST_API': 'fakeapi'})
 def test_handler_invalid_env_var_value():
 
     @init_environment_variables(model=MySchema)
@@ -34,14 +34,10 @@ def test_handler_invalid_env_var_value():
         return {}
 
     with pytest.raises(ValueError):
-        my_handler2({}, generate_context())
+        my_handler2({}, None)
 
 
-@mock.patch.dict(os.environ, {
-    POWERTOOLS_SERVICE_NAME: SERVICE_NAME,
-    POWER_TOOLS_LOG_LEVEL: 'DEBUG',
-    'REST_API': 'https://www.ranthebuilder.cloud/api'
-})
+@mock.patch.dict(os.environ, {'POWERTOOLS_SERVICE_NAME': SERVICE_NAME, 'LOG_LEVEL': 'DEBUG', 'REST_API': 'https://www.ranthebuilder.cloud/api'})
 def test_handler_schema_ok():
 
     @init_environment_variables(model=MySchema)
@@ -52,4 +48,4 @@ def test_handler_schema_ok():
         assert str(env_vars.REST_API) == 'https://www.ranthebuilder.cloud/api'
         return {}
 
-    my_handler({}, generate_context())
+    my_handler({}, None)

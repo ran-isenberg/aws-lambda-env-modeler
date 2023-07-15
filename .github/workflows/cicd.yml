@@ -36,14 +36,7 @@ jobs:
           pip install --upgrade pip pre-commit poetry
           npm install -g aws-cdk
           make deps
-          pip install -r dev_requirements.txt
-          pip install -r lambda_requirements.txt
-      - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@5fd3084fc36e372ff1fff382a39b10d03659f355 # v2.2.0
-        with:
-          role-to-assume: ${{ secrets.AWS_ROLE }}
-          role-session-name: samplerolesession
-          aws-region: us-east-1
+          pip install -r lib_requirements.txt
       - name: pre commit
         run: |
           make pre-commit
@@ -59,28 +52,15 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Unit tests
         run: |
-          make unit
-      - name: Infrastructure tests
-        run: |
-          make infra-tests
-      - name: Deploy to AWS
-        run: make deploy
-      - name: Integration tests
-        run: |
           make pipeline-tests
       - name: Codecov
         uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d # v3.1.4
         with:
           files: ./coverage.xml
-          name: aws-lambda-handler-cookbook-codecov
+          name: aws-lambda-env-parser-codecov
           fail_ci_if_error: false # optional (default = false)
           verbose: false # optional (default = false)
           token: ${{ secrets.CODECOV_TOKEN }}
-      - name: Run E2E tests
-        run: make e2e
-      - name: Destroy stack
-        if: always()
-        run: make destroy
 
   generate_docs_on_main:
     name: generate_docs_on_main
@@ -100,7 +80,7 @@ jobs:
         run: |
           pip install --upgrade pip poetry
           make deps
-          pip install -r dev_requirements.txt
+          pip install -r lib_requirements.txt
       - name: Generate docs
         run: |
           mkdocs gh-deploy --force
