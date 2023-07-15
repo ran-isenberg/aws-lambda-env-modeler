@@ -18,7 +18,7 @@ packages = [
     { include = "aws_lambda_env_vars_parser" }]
 
 [tool.poetry.dependencies]
-python = "^3.10.0"
+python = "^3.7.0"
 pydantic = {version = "^2.0.0"}
 
 [tool.poetry.dev-dependencies]
