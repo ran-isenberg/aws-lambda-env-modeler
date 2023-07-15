@@ -1,5 +1,5 @@
 
-# AWS Lambda Handler Environment Variables Modeler (Python)
+# AWS Lambda Environment Variables Modeler (Python)
 
 [![license](https://img.shields.io/github/license/ran-isenberg/aws-lambda-env-modeler)](https://github.com/ran-isenberg/aws-lambda-env-modeler/blob/master/LICENSE)
 ![PythonSupport](https://img.shields.io/static/v1?label=python&message=3.8.1&color=blue?style=flat-square&logo=python)
