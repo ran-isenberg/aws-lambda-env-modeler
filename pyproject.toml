@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aws_lambda_env_parser"
-version = "1.0.0"
+version = "1.0.1"
 description = "TODO"
 authors = ["Ran Isenberg"]
 classifiers=[
