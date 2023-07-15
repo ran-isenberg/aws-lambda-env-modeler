@@ -17,7 +17,7 @@ readme = "README.md"
 keywords = ["environment variables parser", "aws lambda", "serverless best practices", "aws serverless"]
 license = "MIT-0"
 packages = [
-    { include = "aws_lambda_env_modeler/py.typed" }]
+    { include = "aws_lambda_env_modeler" }]
 
 [tool.poetry.urls]
 "Issue tracker" = "https://github.com/ran-isenberg/aws-lambda-env-modeler/issues"
