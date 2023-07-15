@@ -26,8 +26,6 @@ You need to define all your environment variables in a Pydantic schema class tha
 
 For example:
 
-
-
 All Pydantic schemas extend Pydantic’s ‘BaseModel’ class, turning them into a dataclass.
 
 The schema defines four environment variables: ‘LOG_LEVEL,’ ‘POWERTOOLS_SERVICE_NAME,’ ‘ROLE_ARN,’ and ‘REST_API.’
