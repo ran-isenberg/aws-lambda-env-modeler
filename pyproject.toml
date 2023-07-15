@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "aws_lambda_env_parser"
+name = "aws_lambda_env_modeler"
 version = "1.0.0"
 description = "TODO"
 authors = ["Ran Isenberg"]
@@ -12,16 +12,16 @@ classifiers=[
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
 ]
-repository="https://github.com/ran-isenberg/aws-lambda-env-vars-parser"
+repository="https://github.com/ran-isenberg/aws-lambda-env-modeler"
 readme = "README.md"
 keywords = ["environment variables parser", "best practices", "aws serverless"]
 license = "MIT-0"
 packages = [
-    { include = "aws_lambda_env_vars_parser" }]
+    { include = "aws_lambda_env_modeler" }]
 
 [tool.poetry.urls]
-"Issue tracker" = "https://github.com/ran-isenberg/aws-lambda-env-vars-parser/issues"
-"Releases" = "https://github.com/ran-isenberg/aws-lambda-env-vars-parser/releases"
+"Issue tracker" = "https://github.com/ran-isenberg/aws-lambda-env-modeler/issues"
+"Releases" = "https://github.com/ran-isenberg/aws-lambda-env-modeler/releases"
 
 
 [tool.poetry.dependencies]

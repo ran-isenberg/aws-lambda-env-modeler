@@ -1,12 +1,11 @@
 site_name: AWS Lambda Handler CookBook
 site_description: AWS Lambda Handler CookBook
 site_author: Ran Isenberg
-repo_url: https://github.com/ran-isenberg/aws-lambda-env-vars-parser
+repo_url: https://github.com/ran-isenberg/aws-lambda-env-modeler
 edit_uri: edit/main/docs
 
 nav:
   - Homepage: index.md
-  - Getting Started: getting_started.md
 
 theme:
   name: material
@@ -75,7 +74,7 @@ extra:
     property: G-VN803S5YZ3
   social:
     - icon: fontawesome/brands/github-alt
-      link: https://github.com/ran-isenberg/aws-lambda-env-vars-parser
+      link: https://github.com/ran-isenberg/aws-lambda-env-modeler
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/IsenbergRan
     - icon: fontawesome/brands/linkedin

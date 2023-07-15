@@ -10,7 +10,7 @@ dev:
 
 lint:
 	@echo "Running flake8"
-	flake8 aws_lambda_env_vars_parser/* tests/* docs/examples/* --exclude patterns='build,cdk.json,cdk.context.json,.yaml'
+	flake8 aws_lambda_env_modeler/* tests/* docs/snippets/* --exclude patterns='build,cdk.json,cdk.context.json,.yaml'
 	@echo "Running mypy"
 	make mypy-lint
 
@@ -27,13 +27,13 @@ pre-commit:
 	pre-commit run -a --show-diff-on-failure
 
 mypy-lint:
-	mypy --pretty aws_lambda_env_vars_parser docs/examples tests
+	mypy --pretty aws_lambda_env_modeler docs/snippets tests
 
 deps:
 	poetry export --with=dev --without-hashes --format=requirements.txt > lib_requirements.txt
 
 unit:
-	pytest tests/unit  --cov-config=.coveragerc --cov=aws_lambda_env_vars_parser --cov-report xml
+	pytest tests/unit  --cov-config=.coveragerc --cov=aws_lambda_env_modeler --cov-report xml
 
 
 pr: deps yapf sort pre-commit complex lint lint-docs unit
@@ -42,7 +42,7 @@ yapf:
 	yapf -i -vv --style=./.style --exclude=.venv --exclude=.build --exclude=cdk.out --exclude=.git  -r .
 
 pipeline-tests:
-	pytest tests/unit  --cov-config=.coveragerc --cov=aws_lambda_env_vars_parser --cov-report xml
+	pytest tests/unit  --cov-config=.coveragerc --cov=aws_lambda_env_modeler --cov-report xml
 
 
 docs:
