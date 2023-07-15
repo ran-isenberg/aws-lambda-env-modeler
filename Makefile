@@ -1,4 +1,4 @@
-.PHONY: dev lint complex coverage pre-commit yapf sort deploy destroy deps unit infra-tests integration e2e pipeline-tests docs lint-docs build
+.PHONY: dev lint complex coverage pre-commit yapf sort deploy destroy deps unit integration e2e pipeline-tests docs lint-docs build
 
 
 
@@ -41,9 +41,6 @@ build:
 	mkdir -p .build/lambdas ; cp -r service .build/lambdas
 	mkdir -p .build/common_layer ; poetry export --without=dev --without-hashes --format=requirements.txt > .build/common_layer/requirements.txt
 
-infra-tests:
-	make build
-	pytest tests/infrastructure
 
 integration:
 	pytest tests/integration  --cov-config=.coveragerc --cov=service --cov-report xml
