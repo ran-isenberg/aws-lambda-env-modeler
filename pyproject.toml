@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "aws_lambda_handler_cookbook"
-version = "3.0.0"
-description = "This repository provides a working, deployable, open source based, AWS Lambda handler and CDK Python code. This handler embodies Serverless best practices and has all the bells and whistles for a proper production ready handler"
+name = "aws_lambda_env_parser"
+version = "1.0.0"
+description = "TODO"
 authors = ["Ran Isenberg"]
 classifiers=[
     "Development Status :: 5 - Production/Stable",
@@ -10,19 +10,14 @@ classifiers=[
     "Natural Language :: English",
     "Programming Language :: Python :: 3.10",
 ]
-repository="https://github.com/ran-isenberg/aws-lambda-handler-cookbook"
+repository="https://github.com/ran-isenberg/aws-lambda-env-vars-parser"
 readme = "README.md"
-keywords = ["aws lambda cookbook", "guide to aws lambda", "cdk template", "best practices", "serverless service template"]
+keywords = ["environment variables parser", "best practices", "aws serverless"]
 license = "MIT-0"
 
 [tool.poetry.dependencies]
 python = "^3.10.0"
-pydantic = {version = "^1.9.0"}
-email-validator = {version = "*"}
-aws-lambda-powertools =  {extras = ["all"],version = "*"}
-mypy-boto3-dynamodb = "*"
-cachetools = "*"
-boto3 = "^1.26.125"
+pydantic = {version = "^2.0.0"}
 
 [tool.poetry.dev-dependencies]
 # CDK

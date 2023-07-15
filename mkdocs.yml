@@ -7,18 +7,8 @@ edit_uri: edit/main/docs
 nav:
   - Homepage: index.md
   - Getting Started: getting_started.md
-  - CDK: cdk.md
-  - Pipeline: pipeline.md
   - Best Practices:
-      - best_practices/logger.md
-      - best_practices/tracer.md
-      - best_practices/metrics.md
       - best_practices/environment_variables.md
-      - best_practices/input_validation.md
-      - best_practices/dynamic_configuration.md
-      - Idempotency: https://www.ranthebuilder.cloud/post/serverless-api-idempotency-with-aws-lambda-powertools-and-cdk" target="_blank"
-      - CDK Best practices: https://www.ranthebuilder.cloud/post/aws-cdk-best-practices-from-the-trenches" target="_blank"
-      - Testing Best practices: https://www.ranthebuilder.cloud/post/guide-to-serverless-lambda-testing-best-practices-part-1" target="_blank"
 
 theme:
   name: material
@@ -73,7 +63,7 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
 
-copyright: Copyright &copy; 2022 Ran Isenberg
+copyright: Copyright &copy; 2023 Ran Isenberg
 
 plugins:
   - git-revision-date
