@@ -1,9 +1,5 @@
-"""Advanced event_parser utility
-"""
-from pydantic import BaseModel
-
 from .modeler import get_environment_variables, init_environment_variables
-from .types import Model
+from .types import BaseModel, Model
 
 __all__ = [
     'Model',

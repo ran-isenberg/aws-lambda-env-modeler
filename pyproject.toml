@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aws_lambda_env_modeler"
-version = "1.0.0"
+version = "1.0.1"
 description = "AWS-Lambda-Env-Modeler is a Python library designed to simplify the process of managing and validating environment variables in your AWS Lambda functions."
 authors = ["Ran Isenberg"]
 classifiers=[
