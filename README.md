@@ -1,7 +1,9 @@
 
-# AWS Lambda Handler Cookbook (Python)
+# AWS Lambda Handler Environment Variables (Python)
 
 [![license](https://img.shields.io/github/license/ran-isenberg/aws-lambda-env-vars-parser)](https://github.com/ran-isenberg/aws-lambda-env-vars-parser/blob/master/LICENSE)
+![PythonSupport](https://img.shields.io/static/v1?label=python&message=3.8.1&color=blue?style=flat-square&logo=python)
+![PythonSupport](https://img.shields.io/static/v1?label=python&message=3.9&color=blue?style=flat-square&logo=python)
 ![PythonSupport](https://img.shields.io/static/v1?label=python&message=3.10&color=blue?style=flat-square&logo=python)
 [![codecov](https://codecov.io/gh/ran-isenberg/aws-lambda-env-vars-parser/branch/main/graph/badge.svg?token=P2K7K4KICF)](https://codecov.io/gh/ran-isenberg/aws-lambda-env-vars-parser)
 ![version](https://img.shields.io/github/v/release/ran-isenberg/aws-lambda-env-vars-parser)
@@ -11,9 +13,7 @@
 
 ![alt text](https://github.com/ran-isenberg/aws-lambda-env-vars-parser/blob/main/docs/media/banner.png?raw=true)
 
-This project provides a working, open source based, AWS Lambda handler skeleton Python code including DEPLOYMENT code with CDK and a pipeline.
-
-This project can serve as a template for new Serverless services - CDK deployment code, pipeline and handler are covered.
+This project provides a
 
 **[📜Documentation](https://ran-isenberg.github.io/aws-lambda-env-vars-parser/)** | **[Blogs website](https://www.ranthebuilder.cloud)**
 > **Contact details | ran.isenberg@ranthebuilder.cloud**

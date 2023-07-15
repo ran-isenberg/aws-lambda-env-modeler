@@ -18,7 +18,7 @@ complex:
 	@echo "Running Radon"
 	radon cc -e 'tests/*,cdk.out/*' .
 	@echo "Running xenon"
-	xenon --max-absolute B --max-modules A --max-average A -e 'tests/*,.venv/*,cdk.out/*' .
+	xenon --max-absolute A --max-modules A --max-average A -e 'tests/*,.venv/*,cdk.out/*' .
 
 sort:
 	isort ${PWD}

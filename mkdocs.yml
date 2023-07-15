@@ -7,8 +7,6 @@ edit_uri: edit/main/docs
 nav:
   - Homepage: index.md
   - Getting Started: getting_started.md
-  - Best Practices:
-      - best_practices/environment_variables.md
 
 theme:
   name: material

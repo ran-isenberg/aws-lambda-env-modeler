@@ -1,8 +1,9 @@
 import json
 from http import HTTPStatus
-from typing import Annotated, Any, Dict, Literal
+from typing import Any, Dict
 
 from pydantic import BaseModel, Field, HttpUrl
+from typing_extensions import Annotated, Literal
 
 from aws_lambda_env_vars_parser.parser import get_environment_variables, init_environment_variables
 
