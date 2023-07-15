@@ -246,5 +246,5 @@ $RECYCLE.BIN/
 cdk.out
 .build
 .vscode
- lib_requirements.txt
+lib_requirements.txt
 .dccache
