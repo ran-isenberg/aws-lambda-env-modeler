@@ -10,7 +10,7 @@ description: AWS Lambda Environment Variables Parser Cookbook
 
 ## **The Solution**
 
-The GitHub template project can be found at [https://github.com/ran-isenberg/aws-lambda-handler-cookbook](https://github.com/ran-isenberg/aws-lambda-handler-cookbook){:target="_blank" rel="noopener"}.
+The GitHub template project can be found at [https://github.com/ran-isenberg/aws-lambda-env-vars-parser](https://github.com/ran-isenberg/aws-lambda-env-vars-parser){:target="_blank" rel="noopener"}.
 
 ## **Serverless Best Practices**
 
