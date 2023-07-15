@@ -8,11 +8,7 @@ description: AWS Lambda Environment Variables Parser Cookbook
 
 ## **The Problem**
 
-
-
 ## **The Solution**
-
-
 
 The GitHub template project can be found at [https://github.com/ran-isenberg/aws-lambda-handler-cookbook](https://github.com/ran-isenberg/aws-lambda-handler-cookbook){:target="_blank" rel="noopener"}.
 
@@ -21,7 +17,6 @@ The GitHub template project can be found at [https://github.com/ran-isenberg/aws
 The AWS Lambda handler will implement multiple best practice utilities.
 
 - [**Environment Variables**](best_practices/environment_variables.md)
-
 
 ## **License**
 
