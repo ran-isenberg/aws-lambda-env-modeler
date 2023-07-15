@@ -8,6 +8,8 @@ classifiers=[
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
 ]
 repository="https://github.com/ran-isenberg/aws-lambda-env-vars-parser"
@@ -17,8 +19,13 @@ license = "MIT-0"
 packages = [
     { include = "aws_lambda_env_vars_parser" }]
 
+[tool.poetry.urls]
+"Issue tracker" = "https://github.com/ran-isenberg/aws-lambda-env-vars-parser/issues"
+"Releases" = "https://github.com/ran-isenberg/aws-lambda-env-vars-parser/releases"
+
+
 [tool.poetry.dependencies]
-python = "^3.7.0"
+python = "^3.8.1"
 pydantic = {version = "^2.0.0"}
 
 [tool.poetry.dev-dependencies]

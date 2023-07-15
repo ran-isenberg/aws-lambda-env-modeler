@@ -16,7 +16,7 @@ lint:
 
 complex:
 	@echo "Running Radon"
-	# radon cc -e 'tests/*,cdk.out/*' .
+	radon cc -e 'tests/*,cdk.out/*' .
 	@echo "Running xenon"
 	xenon --max-absolute A --max-modules A --max-average A -e 'tests/*,.venv/*,cdk.out/*' .
 
