@@ -31,7 +31,6 @@ jobs:
           pip install --upgrade pip pre-commit poetry
           make deps
           pip install -r lib_requirements.txt
-          curl -sSL https://install.python-poetry.org | python3 -
       - name: Build package
         run: poetry build
       - name: Publish package
