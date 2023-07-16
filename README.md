@@ -2,12 +2,11 @@
 # AWS Lambda Environment Variables Modeler (Python)
 
 [![license](https://img.shields.io/github/license/ran-isenberg/aws-lambda-env-modeler)](https://github.com/ran-isenberg/aws-lambda-env-modeler/blob/master/LICENSE)
-![PythonSupport](https://img.shields.io/static/v1?label=python&message=3.8.1&color=blue?style=flat-square&logo=python)
-![PythonSupport](https://img.shields.io/static/v1?label=python&message=3.9&color=blue?style=flat-square&logo=python)
-![PythonSupport](https://img.shields.io/static/v1?label=python&message=3.10&color=blue?style=flat-square&logo=python)
+![PythonSupport](https://img.shields.io/static/v1?label=python&message=%203.8.1|%203.9|%203.10&color=blue?style=flat-square&logo=python)
+![PyPI version](https://badge.fury.io/py/aws-lambda-env-modeler.svg)
+![PyPi monthly downloads](https://img.shields.io/pypi/dm/aws-lambda-env-modeler)
 [![codecov](https://codecov.io/gh/ran-isenberg/aws-lambda-env-modeler/branch/main/graph/badge.svg?token=P2K7K4KICF)](https://codecov.io/gh/ran-isenberg/aws-lambda-env-modeler)
 ![version](https://img.shields.io/github/v/release/ran-isenberg/aws-lambda-env-modeler)
-![github-star-badge](https://img.shields.io/github/stars/ran-isenberg/aws-lambda-env-modeler.svg?style=social)
 ![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/ran-isenberg/aws-lambda-env-modeler/badge)
 ![issues](https://img.shields.io/github/issues/ran-isenberg/aws-lambda-env-modeler)
 
