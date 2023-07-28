@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aws_lambda_env_modeler"
-version = "1.0.2"
+version = "1.0.3"
 description = "AWS-Lambda-Env-Modeler is a Python library designed to simplify the process of managing and validating environment variables in your AWS Lambda functions."
 authors = ["Ran Isenberg"]
 classifiers=[
@@ -11,10 +11,11 @@ classifiers=[
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
 ]
 repository="https://github.com/ran-isenberg/aws-lambda-env-modeler"
 readme = "README.md"
-keywords = ["environment variables parser", "aws lambda", "serverless best practices", "aws serverless"]
+keywords = ["environment variables parser", "aws lambda", "serverless best practices", "aws serverless", "lambda environment variables"]
 license = "MIT-0"
 packages = [
     { include = "aws_lambda_env_modeler" }]
@@ -25,7 +26,7 @@ packages = [
 
 
 [tool.poetry.dependencies]
-python = "^3.8.17"
+python = "^3.8.17 || ^3.9.0 || ^3.10.0 || ^3.11.0"
 pydantic = {version = "^2.0.0"}
 
 [tool.poetry.dev-dependencies]
