@@ -62,13 +62,15 @@ Head over to the complete project documentation pages at GitHub pages at [https:
 First, define a Pydantic model for your environment variables:
 
 ```python
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 
 class MyEnvVariables(BaseModel):
     DB_HOST: str
     DB_PORT: int
     DB_USER: str
     DB_PASS: str
+    FLAG_X:  bool
+    API_URL: HttpUrl
 ```
 
 You must first use the `@init_environment_variables` decorator to automatically validate and initialize the environment variables before executing a function:
