@@ -25,14 +25,7 @@ def test_handler_missing_env_var():
         my_handler1({}, None)
 
 
-@mock.patch.dict(
-    os.environ,
-    {
-        'POWERTOOLS_SERVICE_NAME': SERVICE_NAME,
-        'LOG_LEVEL': 'DEBUG',
-        'REST_API': 'fakeapi',
-    },
-)
+@mock.patch.dict(os.environ, {'POWERTOOLS_SERVICE_NAME': SERVICE_NAME, 'LOG_LEVEL': 'DEBUG', 'REST_API': 'fakeapi'})
 def test_handler_invalid_env_var_value():
     @init_environment_variables(model=MySchema)
     def my_handler2(event, context) -> Dict[str, Any]:
@@ -42,14 +35,7 @@ def test_handler_invalid_env_var_value():
         my_handler2({}, None)
 
 
-@mock.patch.dict(
-    os.environ,
-    {
-        'POWERTOOLS_SERVICE_NAME': SERVICE_NAME,
-        'LOG_LEVEL': 'DEBUG',
-        'REST_API': 'https://www.ranthebuilder.cloud/api',
-    },
-)
+@mock.patch.dict(os.environ, {'POWERTOOLS_SERVICE_NAME': SERVICE_NAME, 'LOG_LEVEL': 'DEBUG', 'REST_API': 'https://www.ranthebuilder.cloud/api'})
 def test_handler_schema_ok():
     @init_environment_variables(model=MySchema)
     def my_handler(event, context) -> Dict[str, Any]:
