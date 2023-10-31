@@ -49,3 +49,17 @@ def test_handler_schema_ok():
         return {}
 
     my_handler({}, None)
+
+
+def test_extended_handler_schema_ok(monkeypatch: pytest.MonkeyPatch):
+    monkeypatch.setenv('POWERTOOLS_SERVICE_NAME', SERVICE_NAME)
+    monkeypatch.setenv('LOG_LEVEL', 'DEBUG')
+    monkeypatch.setenv('REST_API', 'https://www.ranthebuilder.cloud/api')
+
+    endpoint = os.environ['REST_API']
+
+    @init_environment_variables(model=MySchema)
+    def my_handler(event, context, endpoint=None):
+        return endpoint
+
+    assert my_handler({}, None, endpoint=endpoint) == endpoint
