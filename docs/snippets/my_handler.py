@@ -19,4 +19,8 @@ class MyHandlerEnvVars(BaseModel):
 def my_handler(event: Dict[str, Any], context) -> Dict[str, Any]:
     env_vars = get_environment_variables(model=MyHandlerEnvVars)  # noqa: F841
     # can access directly env_vars.REST_API, env_vars.ROLE_ARN as dataclass
-    return {'statusCode': HTTPStatus.OK, 'headers': {'Content-Type': 'application/json'}, 'body': json.dumps({'message': 'success'})}
+    return {
+        'statusCode': HTTPStatus.OK,
+        'headers': {'Content-Type': 'application/json'},
+        'body': json.dumps({'message': 'success'}),
+    }
