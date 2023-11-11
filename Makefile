@@ -8,9 +8,14 @@ dev:
 	poetry config --local virtualenvs.in-project true
 	poetry install
 
+format:
+	poetry run ruff check . --fix
+
+format-fix:
+	poetry run ruff format .
+
+
 lint:
-	@echo "Running flake8"
-	flake8 aws_lambda_env_modeler/* tests/* docs/snippets/* --exclude patterns='build,cdk.json,cdk.context.json,.yaml'
 	@echo "Running mypy"
 	make mypy-lint
 
@@ -19,9 +24,6 @@ complex:
 	radon cc -e 'tests/*,cdk.out/*' .
 	@echo "Running xenon"
 	xenon --max-absolute A --max-modules A --max-average A -e 'tests/*,.venv/*,cdk.out/*' .
-
-sort:
-	isort ${PWD}
 
 pre-commit:
 	pre-commit run -a --show-diff-on-failure
@@ -36,10 +38,8 @@ unit:
 	pytest tests/unit  --cov-config=.coveragerc --cov=aws_lambda_env_modeler --cov-report xml
 
 
-pr: deps yapf sort pre-commit complex lint lint-docs unit
+pr: deps pre-commit complex lint lint-docs unit
 
-yapf:
-	yapf -i -vv --style=./.style --exclude=.venv --exclude=.build --exclude=cdk.out --exclude=.git  -r .
 
 pipeline-tests:
 	pytest tests/unit  --cov-config=.coveragerc --cov=aws_lambda_env_modeler --cov-report xml
@@ -50,3 +50,7 @@ docs:
 
 lint-docs:
 	docker run -v ${PWD}:/markdown 06kellyjac/markdownlint-cli --fix "docs"
+
+update-deps:
+	poetry update
+	pre-commit autoupdate

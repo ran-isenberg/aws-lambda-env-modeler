@@ -33,7 +33,6 @@ def init_environment_variables(model: Type[Model]):
     """
 
     def decorator(lambda_handler_function: Callable):
-
         @wraps(lambda_handler_function)
         def wrapper(event: Dict[str, Any], context, **kwargs):
             __parse_model(model)
