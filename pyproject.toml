@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aws_lambda_env_modeler"
-version = "1.0.5"
+version = "1.0.6"
 description = "AWS-Lambda-Env-Modeler is a Python library designed to simplify the process of managing and validating environment variables in your AWS Lambda functions."
 authors = ["Ran Isenberg"]
 classifiers=[
@@ -12,6 +12,7 @@ classifiers=[
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
 repository="https://github.com/ran-isenberg/aws-lambda-env-modeler"
 readme = "README.md"
@@ -26,7 +27,7 @@ packages = [
 
 
 [tool.poetry.dependencies]
-python = "^3.8.17 || ^3.9.0 || ^3.10.0 || ^3.11.0"
+python = "^3.8.17 || ^3.9.0 || ^3.10.0 || ^3.11.0 || ^3.12.0"
 pydantic = {version = "^2.0.0"}
 
 [tool.poetry.dev-dependencies]
@@ -87,8 +88,8 @@ exclude = [
 line-length = 150
 indent-width = 4
 
-# Assume Python 3.11
-target-version = "py311"
+# Assume Python 3.12
+target-version = "py312"
 
 [tool.ruff.lint]
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
