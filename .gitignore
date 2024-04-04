@@ -248,3 +248,4 @@ cdk.out
 .vscode
 lib_requirements.txt
 .dccache
+.ruff_cache

@@ -93,6 +93,28 @@ env_vars = get_environment_variables(MyEnvVariables)
 print(env_vars.DB_HOST)
 ```
 
+## Disabling Cache for Testing
+
+In some cases, such as during testing, you may want to disable the cache. This can be done by setting the `LAMBDA_ENV_MODELER_DISABLE_CACHE` environment variable to 'True' or 'False'.
+
+This is especially useful in unit tests where you want to ensure that your function is called the correct number of times.
+
+Here's an example of how you can use this in a pytest test:
+
+```python
+import pytest
+from unittest.mock import patch
+from aws_lambda_env_modeler.modeler import get_environment_variables
+from aws_lambda_env_modeler.types import Model
+
+class TestModel(Model):
+    var: str
+
+@patch.dict('os.environ', {'LAMBDA_ENV_MODELER_DISABLE_CACHE': 'true', 'var': 'some_value'})
+def test_my_handler():
+    ...
+```
+
 ## Code Contributions
 Code contributions are welcomed. Read this [guide.](https://github.com/ran-isenberg/aws-lambda-env-modeler/blob/main/CONTRIBUTING.md)
 

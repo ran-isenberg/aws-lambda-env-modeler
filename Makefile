@@ -38,7 +38,7 @@ unit:
 	pytest tests/unit  --cov-config=.coveragerc --cov=aws_lambda_env_modeler --cov-report xml
 
 
-pr: deps pre-commit complex lint lint-docs unit
+pr: deps pre-commit format complex lint lint-docs unit
 
 
 pipeline-tests:
