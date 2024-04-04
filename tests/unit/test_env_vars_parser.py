@@ -78,3 +78,10 @@ def test_extended_handler_schema_ok(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setenv('REST_API', 'https://www.ranthebuilder.cloud/api')
 
     # When and Then: The test should continue as normal
+    endpoint = os.environ['REST_API']
+
+    @init_environment_variables(model=MySchema)
+    def my_handler(event, context, endpoint=None):
+        return endpoint
+
+    assert my_handler({}, None, endpoint=endpoint) == endpoint
