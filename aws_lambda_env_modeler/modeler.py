@@ -1,41 +1,30 @@
-import os
-from functools import lru_cache, wraps
+from functools import wraps
 from typing import Any, Callable, Dict, Type
 
+from aws_lambda_env_modeler.modeler_impl import __get_environment_variables_impl
 from aws_lambda_env_modeler.types import Model
-
-
-def get_environment_variables(model: Type[Model]) -> Model:
-    """
-    This function receives a model of type Model, uses it to validate the environment variables, and returns the
-    validated model.
-
-    Args:
-        model (Type[Model]): A Pydantic model that defines the structure and types of the expected environment variables.
-
-    Returns:
-        Model: An instance of the provided model filled with the values of the validated environment variables.
-    """
-    return __parse_model(model)
 
 
 def init_environment_variables(model: Type[Model]):
     """
-    A decorator function for AWS Lambda handler functions that initializes environment variables based on the given Pydantic model before executing
-    the decorated function. The decorator validates the environment variables according to the model structure before
-    running the handler.
+    A decorator for AWS Lambda handler functions. It initializes and validates environment variables based on the provided Pydantic model before the execution of the decorated function.
+    It uses LRU Cache by model class type to optimize parsing time. Cache can be disabled by setting the environment variable 'LAMBDA_ENV_MODELER_DISABLE_CACHE' to FALSE (default: cache is enabled)
 
     Args:
-        model (Type[Model]): A Pydantic model that defines the structure and types of the expected environment variables.
+        model (Type[Model]): A Pydantic model that outlines the structure and types of the expected environment variables.
 
     Returns:
-        Callable: A decorated function that first initializes the environment variables and then runs the function.
+        Callable: A decorated function that first initializes and validates the environment variables, then executes the original function.
+
+    Raises:
+        ValueError: If the environment variables do not align with the model's structure or fail validation.
     """
 
     def decorator(lambda_handler_function: Callable):
         @wraps(lambda_handler_function)
         def wrapper(event: Dict[str, Any], context, **kwargs):
-            __parse_model(model)
+            # Initialize and validate environment variables before executing the lambda handler function
+            __get_environment_variables_impl(model)
             return lambda_handler_function(event, context, **kwargs)
 
         return wrapper
@@ -43,22 +32,19 @@ def init_environment_variables(model: Type[Model]):
     return decorator
 
 
-@lru_cache
-def __parse_model(model: Type[Model]) -> Model:
+def get_environment_variables(model: Type[Model]) -> Model:
     """
-    A helper function to validate and parse environment variables based on a given Pydantic model. This function is
-    also cached to improve performance in successive calls.
+    Retrieves and validates environment variables based on the provided Pydantic model.
+    It uses LRU Cache by model class type to optimize parsing time. Cache can be disabled by setting the environment variable 'LAMBDA_ENV_MODELER_DISABLE_CACHE' to FALSE (default: cache is enabled)
+    It's recommended to use anywhere in the function's after init_environment_variables decorator was used on the handler function.
 
     Args:
-        model (Type[Model]): A Pydantic model that defines the structure and types of the expected environment variables.
+        model (Type[Model]): A Pydantic model that outlines the structure and types of the expected environment variables.
 
     Returns:
-        Model: An instance of the provided model filled with the values of the validated environment variables.
+        Model: An instance of the provided model populated with the values of the validated environment variables.
 
     Raises:
-        ValueError: If the environment variables do not match the structure of the model or cannot be validated.
+        ValueError: If the environment variables do not align with the model's structure or fail validation.
     """
-    try:
-        return model.model_validate(os.environ)
-    except Exception as exc:
-        raise ValueError(f'failed to load environment variables, exception={str(exc)}') from exc
+    return __get_environment_variables_impl(model)

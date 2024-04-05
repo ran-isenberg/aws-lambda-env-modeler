@@ -1,11 +1,11 @@
 import json
 from http import HTTPStatus
-from typing import Any, Dict
+from typing import Any, Dict, Literal
 
 from pydantic import BaseModel, Field, HttpUrl
-from typing_extensions import Annotated, Literal
 
 from aws_lambda_env_modeler import get_environment_variables, init_environment_variables
+from aws_lambda_env_modeler.types import Annotated
 
 
 class MyHandlerEnvVars(BaseModel):

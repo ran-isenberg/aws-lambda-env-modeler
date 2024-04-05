@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aws_lambda_env_modeler"
-version = "1.0.6"
+version = "1.0.7"
 description = "AWS-Lambda-Env-Modeler is a Python library designed to simplify the process of managing and validating environment variables in your AWS Lambda functions."
 authors = ["Ran Isenberg"]
 classifiers=[
@@ -112,5 +112,5 @@ indent-style = "space"
 # Like Black, automatically detect the appropriate line ending.
 line-ending = "auto"
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-third-party = ["pydantic", "aws_lambda_powertools"]

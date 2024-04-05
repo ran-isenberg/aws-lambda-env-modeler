@@ -17,10 +17,13 @@ class MySchema(BaseModel):
 
 
 def test_handler_missing_env_var():
+    # Given: A handler decorated with init_environment_variables
     @init_environment_variables(model=MySchema)
     def my_handler1(event, context) -> Dict[str, Any]:
         return {}
 
+    # When: The handler is called without setting required environment variables
+    # Then: A ValueError should be raised
     with pytest.raises(ValueError):
         my_handler1({}, None)
 
@@ -34,10 +37,13 @@ def test_handler_missing_env_var():
     },
 )
 def test_handler_invalid_env_var_value():
+    # Given: A handler decorated with init_environment_variables and environment variables set with invalid values
     @init_environment_variables(model=MySchema)
     def my_handler2(event, context) -> Dict[str, Any]:
         return {}
 
+    # When: The handler is called
+    # Then: A ValueError should be raised due to invalid environment variable values
     with pytest.raises(ValueError):
         my_handler2({}, None)
 
@@ -51,6 +57,7 @@ def test_handler_invalid_env_var_value():
     },
 )
 def test_handler_schema_ok():
+    # Given: A handler decorated with init_environment_variables and environment variables set with valid values
     @init_environment_variables(model=MySchema)
     def my_handler(event, context) -> Dict[str, Any]:
         env_vars: MySchema = get_environment_variables(model=MySchema)
@@ -59,14 +66,23 @@ def test_handler_schema_ok():
         assert str(env_vars.REST_API) == 'https://www.ranthebuilder.cloud/api'
         return {}
 
+    # When: The handler is called
+    # Then: The environment variables should be correctly parsed and validated
     my_handler({}, None)
 
 
-def test_extended_handler_schema_ok(monkeypatch: pytest.MonkeyPatch):
-    monkeypatch.setenv('POWERTOOLS_SERVICE_NAME', SERVICE_NAME)
-    monkeypatch.setenv('LOG_LEVEL', 'DEBUG')
-    monkeypatch.setenv('REST_API', 'https://www.ranthebuilder.cloud/api')
+@mock.patch.dict(
+    os.environ,
+    {
+        'POWERTOOLS_SERVICE_NAME': SERVICE_NAME,
+        'LOG_LEVEL': 'DEBUG',
+        'REST_API': 'https://www.ranthebuilder.cloud/api',
+    },
+)
+def test_extended_handler_schema_ok(monkeypatch):
+    # Given: Environment variables set with valid values
 
+    # When and Then: the parsing should be successful
     endpoint = os.environ['REST_API']
 
     @init_environment_variables(model=MySchema)
