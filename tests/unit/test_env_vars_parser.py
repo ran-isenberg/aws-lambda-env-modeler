@@ -71,13 +71,18 @@ def test_handler_schema_ok():
     my_handler({}, None)
 
 
-def test_extended_handler_schema_ok(monkeypatch: pytest.MonkeyPatch):
-    # Given: Environment variables set with valid values using monkeypatch
-    monkeypatch.setenv('POWERTOOLS_SERVICE_NAME', SERVICE_NAME)
-    monkeypatch.setenv('LOG_LEVEL', 'DEBUG')
-    monkeypatch.setenv('REST_API', 'https://www.ranthebuilder.cloud/api')
+@mock.patch.dict(
+    os.environ,
+    {
+        'POWERTOOLS_SERVICE_NAME': SERVICE_NAME,
+        'LOG_LEVEL': 'DEBUG',
+        'REST_API': 'https://www.ranthebuilder.cloud/api',
+    },
+)
+def test_extended_handler_schema_ok(monkeypatch):
+    # Given: Environment variables set with valid values
 
-    # When and Then: The test should continue as normal
+    # When and Then: the parsing should be successful
     endpoint = os.environ['REST_API']
 
     @init_environment_variables(model=MySchema)

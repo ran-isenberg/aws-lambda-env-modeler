@@ -2,15 +2,16 @@ import os
 from typing import Literal
 from unittest.mock import patch
 
-from aws_lambda_env_modeler.modeler import get_environment_variables
-from aws_lambda_env_modeler.types import BaseModel
+from pydantic import BaseModel
+
+from aws_lambda_env_modeler import LAMBDA_ENV_MODELER_DISABLE_CACHE, get_environment_variables
 
 
 class TestModel(BaseModel):
     LOG_LEVEL: Literal['DEBUG', 'INFO', 'ERROR', 'CRITICAL', 'WARNING', 'EXCEPTION']
 
 
-@patch.dict('os.environ', {'LAMBDA_ENV_MODELER_DISABLE_CACHE': 'false', 'LOG_LEVEL': 'DEBUG'}, clear=True)
+@patch.dict('os.environ', {LAMBDA_ENV_MODELER_DISABLE_CACHE: 'false', 'LOG_LEVEL': 'DEBUG'}, clear=True)
 def test_get_environment_variables_cache_enabled_then_disabled():
     # Given: Cache is enabled, LAMBDA_ENV_MODELER_DISABLE_CACHE is false
 
@@ -25,7 +26,7 @@ def test_get_environment_variables_cache_enabled_then_disabled():
     env_vars = get_environment_variables(TestModel)
     assert env_vars.LOG_LEVEL == 'DEBUG'
     # When disabling cache
-    os.environ['LAMBDA_ENV_MODELER_DISABLE_CACHE'] = 'true'
+    os.environ[LAMBDA_ENV_MODELER_DISABLE_CACHE] = 'true'
 
     # Then: log level should be 'INFO' instead of 'DEBUG'
     env_vars = get_environment_variables(TestModel)
@@ -50,7 +51,7 @@ def test_get_environment_variables_cache_enabled_by_default():
     assert env_vars.LOG_LEVEL == 'DEBUG'
 
 
-@patch.dict('os.environ', {'LAMBDA_ENV_MODELER_DISABLE_CACHE': 'true', 'LOG_LEVEL': 'DEBUG'}, clear=True)
+@patch.dict('os.environ', {LAMBDA_ENV_MODELER_DISABLE_CACHE: 'true', 'LOG_LEVEL': 'DEBUG'}, clear=True)
 def test_get_environment_variables_cache_disabled():
     # Given: Cache is disabled, LAMBDA_ENV_MODELER_DISABLE_CACHE is true
 

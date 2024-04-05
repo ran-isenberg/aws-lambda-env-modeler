@@ -44,46 +44,40 @@ pip install aws-lambda-env-modeler
 
 ## Usage
 
+### Schema Definition
+
 First, define a Pydantic model for your environment variables:
 
-```python
-from pydantic import BaseModel
-
-class MyEnvVariables(BaseModel):
-    DB_HOST: str
-    DB_PORT: int
-    DB_USER: str
-    DB_PASS: str
+```python title="schema.py"
+--8<-- "docs/snippets/schema.py"
 ```
 
-You must first use the `@init_environment_variables` decorator to automatically validate and initialize the environment variables before executing a function:
+Notice how you can use advanced types and value assertions and not just plain strings.
 
-Then, you can fetch and validate the environment variables with your model:
+### Decorator
 
-```python hl_lines="8 18 20" title="my_handler.py"
+Before executing a function, you must use the `@init_environment_variables` decorator to validate and initialize the environment variables automatically.
+
+The decorator guarantees that the function will run with the correct variable configuration.
+
+Then, you can fetch the environment variables using the global getter function, 'get_environment_variables,' and use them just like a data class. At this point, they are parsed and validated.
+
+```python hl_lines="7 17 19" title="my_handler.py"
 --8<-- "docs/snippets/my_handler.py"
 ```
 
 ## Disabling Cache for Testing
 
-In some cases, such as during testing, you may want to disable the cache. This can be done by setting the `LAMBDA_ENV_MODELER_DISABLE_CACHE` environment variable to 'True' or 'False'.
+By default, the modeler uses cache - the parsed model is cached for performance improvement for multiple 'get' calls.
 
-This is especially useful in unit tests where you want to ensure that your function is called the correct number of times.
+In some cases, such as during testing, you may want to turn off the cache. You can do this by setting the `LAMBDA_ENV_MODELER_DISABLE_CACHE` environment variable to 'True.'
+
+This is especially useful in tests where you want to run multiple tests concurrently, each with a different set of environment variables.
 
 Here's an example of how you can use this in a pytest test:
 
-```python
-import pytest
-from unittest.mock import patch
-from aws_lambda_env_modeler.modeler import get_environment_variables
-from aws_lambda_env_modeler.types import Model
-
-class TestModel(Model):
-    var: str
-
-@patch.dict('os.environ', {'LAMBDA_ENV_MODELER_DISABLE_CACHE': 'true', 'var': 'some_value'})
-def test_my_handler():
-    ...
+```python hl_lines="8 26" title="pytest.py"
+--8<-- "docs/snippets/pytest.py"
 ```
 
 ## License

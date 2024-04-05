@@ -1,10 +1,8 @@
-"""Advanced event_parser utility"""
-
 from pydantic import BaseModel
 
-from .modeler import get_environment_variables, init_environment_variables
-from .modeler_impl import LAMBDA_ENV_MODELER_DISABLE_CACHE
-from .types import Model
+from aws_lambda_env_modeler.modeler import get_environment_variables, init_environment_variables
+from aws_lambda_env_modeler.modeler_impl import LAMBDA_ENV_MODELER_DISABLE_CACHE
+from aws_lambda_env_modeler.types import Model
 
 __all__ = [
     'Model',
