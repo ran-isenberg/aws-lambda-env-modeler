@@ -1,4 +1,4 @@
-from typing import Literal, Annotated
+from typing import Annotated, Literal
 
 from pydantic import BaseModel, Field, HttpUrl
 
