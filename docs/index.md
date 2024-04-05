@@ -62,7 +62,7 @@ The decorator guarantees that the function will run with the correct variable co
 
 Then, you can fetch the environment variables using the global getter function, 'get_environment_variables,' and use them just like a data class. At this point, they are parsed and validated.
 
-```python hl_lines="7 17 19" title="my_handler.py"
+```python hl_lines="7 18 20" title="my_handler.py"
 --8<-- "docs/snippets/my_handler.py"
 ```
 
