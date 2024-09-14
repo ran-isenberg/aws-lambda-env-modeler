@@ -152,7 +152,7 @@ Read our code of conduct [here.](https://github.com/ran-isenberg/aws-lambda-env-
 * Email: [ran.isenberg@ranthebuilder.cloud](mailto:ran.isenberg@ranthebuilder.cloud)
 * Blog Website [RanTheBuilder](https://www.ranthebuilder.cloud)
 * LinkedIn: [ranisenberg](https://www.linkedin.com/in/ranisenberg/)
-* Twitter: [IsenbergRan](https://twitter.com/IsenbergRan)
+* Twitter: [RanBuilder](https://twitter.com/RanBuilder)
 
 
 ## License
