@@ -76,4 +76,4 @@ jobs:
           cache: "poetry" # NOTE: poetry must be installed before this step, or else cache doesn't work
       - name: Generate docs
         run: |
-          mkdocs gh-deploy --force
+          make push-docs

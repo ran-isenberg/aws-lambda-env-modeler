@@ -1,4 +1,4 @@
-.PHONY: dev format format-fix lint complex pre-commit mypy-lint deps unit pipeline-tests docs lint-docs update-deps pr
+.PHONY: dev format format-fix lint complex pre-commit mypy-lint deps unit pipeline-tests docs lint-docs update-deps pr push-docs
 VENV ?= .venv
 PYTHON=$(VENV)/bin/python
 
@@ -47,3 +47,6 @@ lint-docs:
 update-deps:
 	poetry update
 	poetry run pre-commit autoupdate
+
+push-docs:
+	poetry run mkdocs gh-deploy --force
