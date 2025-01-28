@@ -1,12 +1,13 @@
-.PHONY: dev lint complex coverage pre-commit yapf sort deps unit pipeline-tests docs lint-docs
-
+.PHONY: dev format format-fix lint complex pre-commit mypy-lint deps unit pipeline-tests docs lint-docs update-deps pr push-docs
+VENV ?= .venv
+PYTHON=$(VENV)/bin/python
 
 
 dev:
-	pip install --upgrade pip pre-commit poetry
-	pre-commit install
 	poetry config --local virtualenvs.in-project true
 	poetry install
+	poetry run pre-commit install
+
 
 format:
 	poetry run ruff check . --fix
@@ -16,41 +17,36 @@ format-fix:
 
 
 lint:
-	@echo "Running mypy"
-	make mypy-lint
+	poetry run mypy --pretty aws_lambda_env_modeler docs/snippets tests
 
 complex:
-	@echo "Running Radon"
-	radon cc -e 'tests/*,cdk.out/*' .
-	@echo "Running xenon"
-	xenon --max-absolute A --max-modules A --max-average A -e 'tests/*,.venv/*,cdk.out/*' .
+	poetry run radon cc -e 'tests/*,cdk.out/*' .
+	poetry run xenon --max-absolute A --max-modules A --max-average A -e 'tests/*,.venv/*,cdk.out/*' .
 
 pre-commit:
-	pre-commit run -a --show-diff-on-failure
-
-mypy-lint:
-	mypy --pretty aws_lambda_env_modeler docs/snippets tests
+	poetry run pre-commit run -a --show-diff-on-failure
 
 deps:
 	poetry export --with=dev --without-hashes --format=requirements.txt > lib_requirements.txt
 
 unit:
-	pytest tests/unit  --cov-config=.coveragerc --cov=aws_lambda_env_modeler --cov-report xml
-
+	poetry run pytest tests/unit --cov-config=.coveragerc --cov=aws_lambda_env_modeler --cov-report xml
 
 pr: deps pre-commit complex lint lint-docs unit
 
 
 pipeline-tests:
-	pytest tests/unit  --cov-config=.coveragerc --cov=aws_lambda_env_modeler --cov-report xml
-
+	poetry run pytest tests/unit --cov-config=.coveragerc --cov=aws_lambda_env_modeler --cov-report xml
 
 docs:
-	mkdocs serve
+	poetry run mkdocs serve
 
 lint-docs:
 	docker run -v ${PWD}:/markdown 06kellyjac/markdownlint-cli --fix "docs"
 
 update-deps:
 	poetry update
-	pre-commit autoupdate
+	poetry run pre-commit autoupdate
+
+push-docs:
+	poetry run mkdocs gh-deploy --force
