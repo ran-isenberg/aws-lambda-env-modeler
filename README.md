@@ -6,7 +6,7 @@
 ![PyPI version](https://badge.fury.io/py/aws-lambda-env-modeler.svg)
 ![PyPi monthly downloads](https://img.shields.io/pypi/dm/aws-lambda-env-modeler)
 [![PyPI Downloads](https://static.pepy.tech/badge/aws-lambda-env-modeler)](https://pepy.tech/projects/aws-lambda-env-modeler)
-[![codecov](https://codecov.io/gh/ran-isenberg/aws-lambda-env-modeler/branch/main/graph/badge.svg)](https://codecov.io/gh/ran-isenberg/aws-lambda-env-modeler)
+[![codecov](https://codecov.io/github/ran-isenberg/aws-lambda-env-modeler/graph/badge.svg?token=1UaIXTcvGr)](https://codecov.io/github/ran-isenberg/aws-lambda-env-modeler)
 ![version](https://img.shields.io/github/v/release/ran-isenberg/aws-lambda-env-modeler)
 ![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/ran-isenberg/aws-lambda-env-modeler/badge)
 ![issues](https://img.shields.io/github/issues/ran-isenberg/aws-lambda-env-modeler)
