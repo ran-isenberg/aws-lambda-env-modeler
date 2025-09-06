@@ -5,7 +5,7 @@ from aws_lambda_env_modeler.modeler_impl import __get_environment_variables_impl
 from aws_lambda_env_modeler.types import Model
 
 
-def init_environment_variables(model: Type[Model]):
+def init_environment_variables(model: Type[Model]) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
     """
     A decorator for AWS Lambda handler functions. It initializes and validates environment variables based on the provided Pydantic model before the execution of the decorated function.
     It uses LRU Cache by model class type to optimize parsing time. Cache can be disabled by setting the environment variable 'LAMBDA_ENV_MODELER_DISABLE_CACHE' to FALSE (default: cache is enabled)
@@ -20,9 +20,9 @@ def init_environment_variables(model: Type[Model]):
         ValueError: If the environment variables do not align with the model's structure or fail validation.
     """
 
-    def decorator(lambda_handler_function: Callable):
+    def decorator(lambda_handler_function: Callable[..., Any]) -> Callable[..., Any]:
         @wraps(lambda_handler_function)
-        def wrapper(event: Dict[str, Any], context, **kwargs):
+        def wrapper(event: Dict[str, Any], context: Any, **kwargs: Any) -> Any:
             # Initialize and validate environment variables before executing the lambda handler function
             __get_environment_variables_impl(model)
             return lambda_handler_function(event, context, **kwargs)
