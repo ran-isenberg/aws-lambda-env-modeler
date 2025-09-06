@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "aws_lambda_env_modeler"
-version = "2.0.0"
+version = "2.0.1"
 description = "AWS-Lambda-Env-Modeler is a Python library designed to simplify the process of managing and validating environment variables in your AWS Lambda functions."
 authors = [{ name = "Ran Isenberg" }]
 requires-python = ">=3.9.0,<4"
