@@ -4,7 +4,7 @@ PYTHON=$(VENV)/bin/python
 
 
 dev:
-	uv sync
+	uv sync --frozen
 
 format:
 	uv run ruff check . --fix

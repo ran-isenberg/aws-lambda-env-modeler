@@ -30,7 +30,7 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - name: Install uv
-        uses: astral-sh/setup-uv@vc2a34e416a14ba92bf7e5f5223806791c8d384e1
+        uses: astral-sh/setup-uv@557e51de59eb14aaaba2ed9621916900a91d50c6
       - name: Install dependencies
         run: |
           pip install --upgrade pip pre-commit
