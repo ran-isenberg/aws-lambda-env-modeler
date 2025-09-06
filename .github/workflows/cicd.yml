@@ -75,7 +75,6 @@ jobs:
         uses: astral-sh/setup-uv@557e51de59eb14aaaba2ed9621916900a91d50c6
       - name: Install dependencies
         run: |
-          pip install --upgrade pip pre-commit
           make dev
           make deps
       - name: Generate docs
