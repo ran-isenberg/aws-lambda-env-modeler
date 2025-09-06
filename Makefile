@@ -43,7 +43,6 @@ lint-docs:
 update-deps:
 	uv lock --upgrade
 	uv run pre-commit autoupdate
-	uv pip freeze > requirements.txt
 
 push-docs:
 	uv run mkdocs gh-deploy --force
