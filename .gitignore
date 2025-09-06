@@ -249,3 +249,5 @@ cdk.out
 lib_requirements.txt
 .dccache
 .ruff_cache
+.poetry
+.pytest_cache

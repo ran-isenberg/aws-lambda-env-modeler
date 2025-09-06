@@ -8,10 +8,10 @@ updates:
       prefix: chore
       include: scope
 
-  - package-ecosystem: "pip"
+  - package-ecosystem: "uv"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     target-branch: "main"
     commit-message:
       prefix: chore
