@@ -2,7 +2,7 @@
 # AWS Lambda Environment Variables Modeler (Python)
 
 [![license](https://img.shields.io/github/license/ran-isenberg/aws-lambda-env-modeler)](https://github.com/ran-isenberg/aws-lambda-env-modeler/blob/master/LICENSE)
-![PythonSupport](https://img.shields.io/static/v1?label=python&message=%203.9|%203.10|%203.11|%203.12|%203.13&color=blue?style=flat-square&logo=python)
+![PythonSupport](https://img.shields.io/static/v1?label=python&message=%203.9|%203.10|%203.11|%203.12|%203.13|%203.14&color=blue?style=flat-square&logo=python)
 ![PyPI version](https://badge.fury.io/py/aws-lambda-env-modeler.svg)
 ![PyPi monthly downloads](https://img.shields.io/pypi/dm/aws-lambda-env-modeler)
 [![PyPI Downloads](https://static.pepy.tech/badge/aws-lambda-env-modeler)](https://pepy.tech/projects/aws-lambda-env-modeler)
