@@ -9,7 +9,7 @@
 name: Upload Python Package
 
 env:
-  PYTHON_VERSION: "3.13"
+  PYTHON_VERSION: "3.14"
 
 on:
   release:
