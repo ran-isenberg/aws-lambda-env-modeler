@@ -60,7 +60,7 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
 
-copyright: Copyright &copy; 2025 Ran Isenberg
+copyright: Copyright &copy; 2026 Ran Isenberg
 
 plugins:
   - git-revision-date
@@ -69,9 +69,6 @@ extra_css:
   - stylesheets/extra.css
 
 extra:
-  analytics:
-    provider: google
-    property: G-VN803S5YZ3
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/ran-isenberg/aws-lambda-env-modeler

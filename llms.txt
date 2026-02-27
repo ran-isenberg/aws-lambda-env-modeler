@@ -1,0 +1,26 @@
+# aws-lambda-env-modeler
+
+> A Python library that uses Pydantic models to validate, parse, and manage environment variables in AWS Lambda functions.
+
+aws-lambda-env-modeler simplifies environment variable management in AWS Lambda by leveraging Pydantic for type-safe parsing and validation. It provides a decorator to validate variables before handler execution and a global getter function for safe access anywhere in your code. Parsed models are cached for performance.
+
+- Python 3.9 - 3.14
+- Requires: pydantic >= 2.12.0, < 3
+- License: MIT
+
+## Documentation
+
+- [Homepage](https://ran-isenberg.github.io/aws-lambda-env-modeler/): Full documentation with usage examples
+- [Blog Post](https://www.ranthebuilder.cloud/post/aws-lambda-cookbook-environment-variables): Detailed explanation of the problem and solution
+- [PyPI](https://pypi.org/project/aws-lambda-env-modeler/): Package page with installation instructions
+
+## Source Code
+
+- [GitHub Repository](https://github.com/ran-isenberg/aws-lambda-env-modeler): Source code and issue tracker
+- [modeler.py](https://github.com/ran-isenberg/aws-lambda-env-modeler/blob/main/aws_lambda_env_modeler/modeler.py): Core public API (`init_environment_variables`, `get_environment_variables`)
+- [modeler_impl.py](https://github.com/ran-isenberg/aws-lambda-env-modeler/blob/main/aws_lambda_env_modeler/modeler_impl.py): Internal implementation with caching logic
+
+## Optional
+
+- [Contributing](https://github.com/ran-isenberg/aws-lambda-env-modeler/blob/main/CONTRIBUTING.md): Contribution guidelines
+- [License](https://github.com/ran-isenberg/aws-lambda-env-modeler/blob/main/LICENSE): MIT License
