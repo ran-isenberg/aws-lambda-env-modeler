@@ -45,4 +45,4 @@ update-deps:
 	uv run pre-commit autoupdate
 
 push-docs:
-	uv run zensical gh-deploy --force
+	uv run zensical build --clean
