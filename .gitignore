@@ -251,3 +251,5 @@ lib_requirements.txt
 .ruff_cache
 .poetry
 .pytest_cache
+node_modules
+package-lock.json

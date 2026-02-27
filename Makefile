@@ -16,8 +16,8 @@ lint:
 	uv run mypy --pretty aws_lambda_env_modeler docs/snippets tests
 
 complex:
-	uv run radon cc -e 'tests/*,cdk.out/*' .
-	uv run xenon --max-absolute A --max-modules A --max-average A -e 'tests/*,.venv/*,cdk.out/*' .
+	uv run radon cc -e 'tests/*,cdk.out/*,node_modules/*,site/*' .
+	uv run xenon --max-absolute A --max-modules A --max-average A -e 'tests/*,.venv/*,cdk.out/*,node_modules/*,site/*' .
 
 pre-commit:
 	uv run pre-commit run -a --show-diff-on-failure
@@ -35,14 +35,14 @@ pipeline-tests:
 	uv run pytest tests/unit --cov-config=.coveragerc --cov=aws_lambda_env_modeler --cov-report xml
 
 docs:
-	uv run mkdocs serve
+	uv run zensical serve
 
 lint-docs:
-	docker run -v ${PWD}:/markdown 06kellyjac/markdownlint-cli --fix "docs"
+	npx markdownlint-cli --fix "docs"
 
 update-deps:
 	uv lock --upgrade
 	uv run pre-commit autoupdate
 
 push-docs:
-	uv run mkdocs gh-deploy --force
+	uv run zensical gh-deploy --force

@@ -4,7 +4,7 @@
 
 aws-lambda-env-modeler simplifies environment variable management in AWS Lambda by leveraging Pydantic for type-safe parsing and validation. It provides a decorator to validate variables before handler execution and a global getter function for safe access anywhere in your code. Parsed models are cached for performance.
 
-- Python 3.9 - 3.14
+- Python 3.10 - 3.14
 - Requires: pydantic >= 2.12.0, < 3
 - License: MIT
 

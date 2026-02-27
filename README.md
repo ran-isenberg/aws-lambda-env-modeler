@@ -2,7 +2,7 @@
 # AWS Lambda Environment Variables Modeler (Python)
 
 [![license](https://img.shields.io/github/license/ran-isenberg/aws-lambda-env-modeler)](https://github.com/ran-isenberg/aws-lambda-env-modeler/blob/master/LICENSE)
-![PythonSupport](https://img.shields.io/static/v1?label=python&message=%203.9|%203.10|%203.11|%203.12|%203.13|%203.14&color=blue?style=flat-square&logo=python)
+![PythonSupport](https://img.shields.io/static/v1?label=python&message=%203.10|%203.11|%203.12|%203.13|%203.14&color=blue?style=flat-square&logo=python)
 ![PyPI version](https://badge.fury.io/py/aws-lambda-env-modeler.svg)
 ![PyPi monthly downloads](https://img.shields.io/pypi/dm/aws-lambda-env-modeler)
 [![PyPI Downloads](https://static.pepy.tech/badge/aws-lambda-env-modeler)](https://pepy.tech/projects/aws-lambda-env-modeler)
@@ -15,7 +15,7 @@
 
 AWS-Lambda-Env-Modeler is a Python library designed to simplify the process of managing and validating environment variables in your AWS Lambda functions.
 
-It leverages the power of [Pydantic](https://pydantic-docs.helpmanual.io/) models to define the expected structure and types of the environment variables.
+It leverages the power of [Pydantic](https://docs.pydantic.dev/latest/) models to define the expected structure and types of the environment variables.
 
 This library is especially handy for serverless applications where managing configuration via environment variables is a common practice.
 
@@ -83,7 +83,7 @@ Then, you can fetch the environment variables using the global getter function, 
 ```python
 from aws_lambda_env_modeler import init_environment_variables
 
-@init_environment_variables(MyEnvVariables)
+@init_environment_variables(model=MyEnvVariables)
 def my_handler_entry_function(event, context):
     # At this point, environment variables are already validated and initialized
     pass
@@ -94,7 +94,7 @@ Then, you can fetch and validate the environment variables with your model:
 ```python
 from aws_lambda_env_modeler import get_environment_variables
 
-env_vars = get_environment_variables(MyEnvVariables)
+env_vars = get_environment_variables(model=MyEnvVariables)
 print(env_vars.DB_HOST)
 ```
 
@@ -115,7 +115,7 @@ from typing import Any, Dict
 from unittest.mock import patch
 
 from pydantic import BaseModel
-from typing_extensions import Literal
+from typing import Literal
 
 from aws_lambda_env_modeler import LAMBDA_ENV_MODELER_DISABLE_CACHE, get_environment_variables, init_environment_variables
 
