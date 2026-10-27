@@ -1,8 +1,8 @@
 
 # AWS Lambda Environment Variables Modeler (Python)
 
-[![license](https://img.shields.io/github/license/ran-isenberg/aws-lambda-env-modeler)](https://github.com/ran-isenberg/aws-lambda-env-modeler/blob/master/LICENSE)
-![PythonSupport](https://img.shields.io/static/v1?label=python&message=%203.10|%203.11|%203.12|%203.13|%203.14&color=blue?style=flat-square&logo=python)
+[![license](https://img.shields.io/github/license/ran-isenberg/aws-lambda-env-modeler)](https://github.com/ran-isenberg/aws-lambda-env-modeler/blob/main/LICENSE)
+![PythonSupport](https://img.shields.io/static/v1?label=python&message=%203.11|%203.12|%203.13|%203.14|%203.15&color=blue?style=flat-square&logo=python)
 ![PyPI version](https://badge.fury.io/py/aws-lambda-env-modeler.svg)
 ![PyPi monthly downloads](https://img.shields.io/pypi/dm/aws-lambda-env-modeler)
 [![PyPI Downloads](https://static.pepy.tech/badge/aws-lambda-env-modeler)](https://pepy.tech/projects/aws-lambda-env-modeler)
@@ -11,7 +11,7 @@
 ![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/ran-isenberg/aws-lambda-env-modeler/badge)
 ![issues](https://img.shields.io/github/issues/ran-isenberg/aws-lambda-env-modeler)
 
-![alt text](https://github.com/ran-isenberg/aws-lambda-env-modeler/blob/main/docs/media/banner.png?raw=true)
+<a href="https://www.ranthebuilder.cloud/"><img alt="Ran The Builder - AI Adoption, Platform Engineering, AWS Serverless" src="https://ranthebuilder.cloud/images/og-image-v2.jpg" width="400" /></a>
 
 AWS-Lambda-Env-Modeler is a Python library designed to simplify the process of managing and validating environment variables in your AWS Lambda functions.
 
@@ -19,7 +19,7 @@ It leverages the power of [Pydantic](https://docs.pydantic.dev/latest/) models t
 
 This library is especially handy for serverless applications where managing configuration via environment variables is a common practice.
 
-**[📜Documentation](https://ran-isenberg.github.io/aws-lambda-env-modeler/)** | **[Blogs website](https://www.ranthebuilder.cloud)**
+**[📜Documentation](https://ran-isenberg.github.io/aws-lambda-env-modeler/)** | **[Website](https://www.ranthebuilder.cloud)**
 > **Contact details | ran.isenberg@ranthebuilder.cloud**
 
 
@@ -36,12 +36,12 @@ This usage may cause nasty bugs or even crashes in production.
 
 This library allows you to correctly parse, validate, and use your environment variables in your Python AWS Lambda code.
 
-Read more about it [here](https://www.ranthebuilder.cloud/post/aws-lambda-cookbook-environment-variables)
+Read more about it in the [AWS Lambda environment variables article on the Ran The Builder website](https://www.ranthebuilder.cloud/post/aws-lambda-cookbook-environment-variables).
 
 ### **Features**
 
 - Validates the environment variables against a Pydantic model: define both semantic and syntactic validation.
-- Serializes the string environment variables into complex classes and types.
+- Parses the string environment variables into complex classes and types.
 - Provides means to access the environment variables safely with a global getter function in every part of the function.
 - Provides a decorator to initialize the environment variables before executing a function.
 - Caches the parsed model for performance improvement for multiple 'get' calls.
@@ -49,14 +49,22 @@ Read more about it [here](https://www.ranthebuilder.cloud/post/aws-lambda-cookbo
 
 ## Installation
 
+Supported Python versions: 3.11, 3.12, 3.13, 3.14 and 3.15. Python 3.10 is no longer supported, as it is deprecated. See the [AWS Lambda runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) page for further information.
+
 You can install it using pip:
 
 ```bash
 pip install aws-lambda-env-modeler
 ```
 
+or uv:
+
+```bash
+uv add aws-lambda-env-modeler
+```
+
 ## Getting started
-Head over to the complete project documentation pages at GitHub pages at [https://ran-isenberg.github.io/aws-lambda-env-modeler](https://ran-isenberg.github.io/aws-lambda-env-modeler/)
+Head over to the complete documentation at [https://ran-isenberg.github.io/aws-lambda-env-modeler](https://ran-isenberg.github.io/aws-lambda-env-modeler/)
 
 
 ## Usage
@@ -65,12 +73,13 @@ First, define a Pydantic model for your environment variables:
 ```python
 from pydantic import BaseModel, HttpUrl
 
+
 class MyEnvVariables(BaseModel):
     DB_HOST: str
     DB_PORT: int
     DB_USER: str
     DB_PASS: str
-    FLAG_X:  bool
+    FLAG_X: bool
     API_URL: HttpUrl
 ```
 
@@ -78,10 +87,9 @@ Before executing a function, you must use the `@init_environment_variables` deco
 
 The decorator guarantees that the function will run with the correct variable configuration.
 
-Then, you can fetch the environment variables using the global getter function, 'get_environment_variables,' and use them just like a data class. At this point, they are parsed and validated.
-
 ```python
 from aws_lambda_env_modeler import init_environment_variables
+
 
 @init_environment_variables(model=MyEnvVariables)
 def my_handler_entry_function(event, context):
@@ -89,7 +97,7 @@ def my_handler_entry_function(event, context):
     pass
 ```
 
-Then, you can fetch and validate the environment variables with your model:
+Then, you can fetch the environment variables using the global getter function, 'get_environment_variables,' and use them just like a data class. At this point, they are parsed and validated.
 
 ```python
 from aws_lambda_env_modeler import get_environment_variables
@@ -102,20 +110,19 @@ print(env_vars.DB_HOST)
 
 By default, the modeler uses cache - the parsed model is cached for performance improvement for multiple 'get' calls.
 
-In some cases, such as during testing, you may want to turn off the cache. You can do this by setting the `LAMBDA_ENV_MODELER_DISABLE_CACHE` environment variable to 'True.'
+In some cases, such as during testing, you may want to turn off the cache. You can do this by setting the `LAMBDA_ENV_MODELER_DISABLE_CACHE` environment variable to `true`.
 
-This is especially useful in tests where you want to run multiple tests concurrently, each with a different set of environment variables.
+This is especially useful in tests where each test sets a different set of environment variables for the same model.
 
 Here's an example of how you can use this in a pytest test:
 
 ```python
 import json
 from http import HTTPStatus
-from typing import Any, Dict
+from typing import Any, Dict, Literal
 from unittest.mock import patch
 
 from pydantic import BaseModel
-from typing import Literal
 
 from aws_lambda_env_modeler import LAMBDA_ENV_MODELER_DISABLE_CACHE, get_environment_variables, init_environment_variables
 
@@ -151,7 +158,7 @@ Read our code of conduct [here.](https://github.com/ran-isenberg/aws-lambda-env-
 
 ## Connect
 * Email: [ran.isenberg@ranthebuilder.cloud](mailto:ran.isenberg@ranthebuilder.cloud)
-* Blog Website [RanTheBuilder](https://www.ranthebuilder.cloud)
+* Website [RanTheBuilder](https://www.ranthebuilder.cloud)
 * LinkedIn: [ranisenberg](https://www.linkedin.com/in/ranisenberg/)
 * Twitter: [RanBuilder](https://twitter.com/RanBuilder)
 * Bluesky: [@ranthebuilder.cloud](https://bsky.app/profile/ranthebuilder.cloud)

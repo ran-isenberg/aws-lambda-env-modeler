@@ -5,6 +5,8 @@ description: Install and start using AWS Lambda Env Modeler
 
 ## Installation
 
+Supported Python versions: 3.11, 3.12, 3.13, 3.14 and 3.15. Python 3.10 is no longer supported, as it is deprecated. See the [AWS Lambda runtimes](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html){:target="_blank" rel="noopener"} page for further information.
+
 === "pip"
 
     ```bash
