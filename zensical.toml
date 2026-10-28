@@ -17,10 +17,11 @@ nav = [
 ]
 
 extra_css = ["stylesheets/extra.css"]
+extra_javascript = ["javascripts/dark-only.js"]
 
 [project.theme]
 language = "en"
-logo = "media/builder.png"
+logo = "media/logo.webp"
 favicon = "media/favicon.png"
 
 features = [
@@ -36,18 +37,10 @@ features = [
 [project.theme.font]
 text = "Ubuntu"
 
-[[project.theme.palette]]
-scheme = "default"
-primary = "blue"
-toggle.icon = "material/toggle-switch-off-outline"
-toggle.name = "Switch to dark mode"
-
-[[project.theme.palette]]
+[project.theme.palette]
 scheme = "slate"
 primary = "indigo"
 accent = "teal"
-toggle.icon = "material/toggle-switch"
-toggle.name = "Switch to light mode"
 
 [project.theme.icon]
 repo = "fontawesome/brands/github"

@@ -4,10 +4,10 @@ build-backend = "hatchling.build"
 
 [project]
 name = "aws_lambda_env_modeler"
-version = "3.0.0"
+version = "4.0.0"
 description = "AWS-Lambda-Env-Modeler is a Python library designed to simplify the process of managing and validating environment variables in your AWS Lambda functions."
 authors = [{ name = "Ran Isenberg" }]
-requires-python = ">=3.10.0,<4"
+requires-python = ">=3.11.0,<4"
 readme = "README.md"
 license = "MIT-0"
 keywords = [
@@ -22,11 +22,11 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
 ]
 dependencies = ["pydantic>=2.12.0,<3"]
 
@@ -100,8 +100,8 @@ exclude = [
 line-length = 150
 indent-width = 4
 
-# Assume Python 3.14
-target-version = "py314"
+# Minimum supported Python version
+target-version = "py311"
 
 [tool.ruff.lint]
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
@@ -116,6 +116,8 @@ select = [
 ignore = [ "E203", "E266", "E501", "W191"]
 
 [tool.ruff.format]
+# Markdown code blocks hold pymdownx snippet directives that are not valid Python
+exclude = ["docs/*.md"]
 quote-style = "single"
 
 # Like Black, indent with spaces, rather than tabs.

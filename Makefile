@@ -41,8 +41,15 @@ lint-docs:
 	npx markdownlint-cli --fix "docs"
 
 update-deps:
+	@echo "Updating uv dependencies..."
 	uv lock --upgrade
+	uv sync
+	@echo "Updating pre-commit hooks..."
 	uv run pre-commit autoupdate
+	@echo "Updating npm dependencies..."
+	npx --yes npm-check-updates -u
+	npm install
+	@echo "All dependencies updated successfully!"
 
 push-docs:
 	uv run zensical build --clean

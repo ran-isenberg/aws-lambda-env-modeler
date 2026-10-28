@@ -1,10 +1,11 @@
 ---
-title: Homepage
 description: AWS Lambda Environment Variables Modeler - Python library for validating and managing environment variables in AWS Lambda functions
 ---
-## **AWS Lambda Environment Variables Modeler**
+# AWS Lambda Environment Variables Modeler
 
-[<img alt="alt_text" src="./media/banner.png" />](https://www.ranthebuilder.cloud/)
+<!-- markdownlint-disable-file MD041 -->
+
+![PythonSupport](https://img.shields.io/static/v1?label=python&message=%203.11|%203.12|%203.13|%203.14|%203.15&color=blue?style=flat-square&logo=python)
 
 AWS-Lambda-Env-Modeler is a Python library designed to simplify the process of managing and validating environment variables in your AWS Lambda functions.
 
@@ -24,12 +25,12 @@ This usage may cause nasty bugs or even crashes in production.
 
 This library allows you to correctly parse, validate, and use your environment variables in your Python AWS Lambda code.
 
-Read more about it [here](https://www.ranthebuilder.cloud/post/aws-lambda-cookbook-environment-variables){:target="_blank" rel="noopener"}
+Read more about it in the [AWS Lambda environment variables article on the Ran The Builder website](https://www.ranthebuilder.cloud/post/aws-lambda-cookbook-environment-variables){:target="_blank" rel="noopener"}.
 
 ### **Features**
 
 - Validates the environment variables against a Pydantic model: define both semantic and syntactic validation.
-- Serializes the string environment variables into complex classes and types.
+- Parses the string environment variables into complex classes and types.
 - Provides means to access the environment variables safely with a global getter function in every part of the function.
 - Provides a decorator to initialize the environment variables before executing a function.
 - Caches the parsed model for performance improvement for multiple 'get' calls.
@@ -37,3 +38,5 @@ Read more about it [here](https://www.ranthebuilder.cloud/post/aws-lambda-cookbo
 ## License
 
 This library is licensed under the MIT License. See the [LICENSE](https://github.com/ran-isenberg/aws-lambda-env-modeler/blob/main/LICENSE) file.
+
+[<img alt="Ran The Builder - AI Adoption, Platform Engineering, AWS Serverless" src="./media/ran-the-builder-hero.jpg" width="400" />](https://www.ranthebuilder.cloud/){:target="_blank" rel="noopener"}

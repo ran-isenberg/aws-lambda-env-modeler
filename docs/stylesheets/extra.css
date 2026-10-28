@@ -3,11 +3,7 @@
 }
 
 .highlight .hll {
-    background-color: lavender
-
-    [data-md-color-scheme="slate"] {
-        background-color: rgb(69, 48, 164)
-    }
+    background-color: rgb(69, 48, 164)
 }
 
 .md-typeset table:not([class]) {
@@ -15,7 +11,7 @@
 }
 
 .md-typeset a {
-    border-bottom: 0.1px dashed black
+    border-bottom: 0.1px dashed currentColor
 }
 
 .md-typeset table:not([class]) {
@@ -36,7 +32,7 @@
 
 .copyMe {
 	cursor: pointer;
-	border-bottom: 0.1px dashed black;
+	border-bottom: 0.1px dashed currentColor;
 }
 
 p > code,

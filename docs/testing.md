@@ -7,9 +7,9 @@ description: How to disable cache and test with different environment variables
 
 By default, the modeler uses cache - the parsed model is cached for performance improvement for multiple 'get' calls.
 
-In some cases, such as during testing, you may want to turn off the cache. You can do this by setting the `LAMBDA_ENV_MODELER_DISABLE_CACHE` environment variable to 'True.'
+In some cases, such as during testing, you may want to turn off the cache. You can do this by setting the `LAMBDA_ENV_MODELER_DISABLE_CACHE` environment variable to `true`.
 
-This is especially useful in tests where you want to run multiple tests concurrently, each with a different set of environment variables.
+This is especially useful in tests where each test sets a different set of environment variables for the same model.
 
 Here's an example of how you can use this in a pytest test:
 
